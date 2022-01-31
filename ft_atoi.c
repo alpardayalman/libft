@@ -6,14 +6,13 @@
 /*   By: ayalman <ayalman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 15:06:28 by ayalman           #+#    #+#             */
-/*   Updated: 2022/01/31 15:52:27 by ayalman          ###   ########.Tr       */
+/*   Updated: 2022/01/31 23:06:45 by ayalman          ###   ########.Tr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_atoi(const char *s)
 {
 	int	sum;
-	int	ret;
 	int	index;
 	int	sign;
 
