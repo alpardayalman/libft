@@ -10,3 +10,25 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+
+char    *ft_strmapi(char const *s, char (*f)(unsigned int, char))
+{
+    unsigned int index;
+    char    *ptr;
+
+    index = 0;
+    if (!s || (!s && !f))
+        return (ft_strdup(""));
+    else if (!f)
+        return (ft_strdup(s));
+    ptr = ft_strdup(s);
+    if (!ptr)
+        return (rtn = NULL);
+    while (s[index])
+    {
+        ptr[index] = (*f)(index, s[index]);
+        index++;
+    }
+    return (ptr);
+}
