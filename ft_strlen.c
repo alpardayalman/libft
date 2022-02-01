@@ -6,18 +6,18 @@
 /*   By: ayalman <ayalman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 21:37:41 by ayalman           #+#    #+#             */
-/*   Updated: 2022/01/31 22:08:51 by ayalman          ###   ########.fr       */
+/*   Updated: 2022/02/01 15:40:19 by ayalman          ###   ########.Tr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t ft_strlen(const char *c)
+size_t	ft_strlen(const char *c)
 {
-    int index;
+	int	index;
 
-    index = 0;
-    while (c[index])
-        index++;
-    return (index);
+	index = 0;
+	while (c[index])
+		index++;
+	return (index);
 }

@@ -6,22 +6,27 @@
 /*   By: ayalman <ayalman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 21:37:51 by ayalman           #+#    #+#             */
-/*   Updated: 2022/01/31 21:49:45 by ayalman          ###   ########.fr       */
+/*   Updated: 2022/02/01 17:30:52 by ayalman          ###   ########.Tr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char    *ft_strrchr(const char *s, int c)
+char	*ft_strrchr(const char *s, int c)
 {
-    int index;
+	int		index;
+	char	*ptr;
 
-    index = (int)ft_strlen(s) + 1;
-    while (index < 0)
-    {
-        if (*(s + index) == (char)c)
-            return ((char *)s + index);
-        index++;
-    }
-    return (NULL);
+	if (!s)
+		return (NULL);
+	index = -1;
+	ptr = 0;
+	while (s[++index])
+	{
+		if (s[index] == c)
+			ptr = (char *)(s + index);
+	}
+	if (s[index] == c)
+		ptr = (char *)(s + index);
+	return (ptr);
 }

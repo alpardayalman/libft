@@ -6,18 +6,18 @@
 /*   By: ayalman <ayalman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 21:37:22 by ayalman           #+#    #+#             */
-/*   Updated: 2022/01/31 21:49:23 by ayalman          ###   ########.fr       */
+/*   Updated: 2022/02/01 16:11:43 by ayalman          ###   ########.Tr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void    ft_putstr_fd(char *s, int fd)
+void	ft_putstr_fd(char *s, int fd)
 {
-    int index;
+	int	index;
 
-    index = 0;
-    if (s)
-        while (s[index] != '\0')
-            write(fd, &s[i++], 1);
+	index = 0;
+	if (s)
+		while (s[index] != '\0')
+			write(fd, &s[index++], 1);
 }

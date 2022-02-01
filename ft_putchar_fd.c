@@ -6,13 +6,13 @@
 /*   By: ayalman <ayalman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 21:37:15 by ayalman           #+#    #+#             */
-/*   Updated: 2022/01/31 21:49:17 by ayalman          ###   ########.fr       */
+/*   Updated: 2022/02/01 16:09:10 by ayalman          ###   ########.Tr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void    ft_putchar_fd(char a, int fd)
+void	ft_putchar_fd(char a, int fd)
 {
-    write(fd, &a, 1);
+	write(fd, &a, 1);
 }

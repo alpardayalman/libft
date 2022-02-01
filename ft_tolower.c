@@ -6,11 +6,11 @@
 /*   By: ayalman <ayalman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 14:45:32 by ayalman           #+#    #+#             */
-/*   Updated: 2022/01/31 21:49:48 by ayalman          ###   ########.fr       */
+/*   Updated: 2022/02/01 15:14:06 by ayalman          ###   ########.Tr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_tolower(int a)
+int	ft_tolower(int a)
 {
 	if (a >= 'A' && a <= 'Z')
 		a += 32;

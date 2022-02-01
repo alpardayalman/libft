@@ -6,11 +6,11 @@
 /*   By: ayalman <ayalman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 14:48:58 by ayalman           #+#    #+#             */
-/*   Updated: 2022/01/31 14:49:14 by ayalman          ###   ########.Tr       */
+/*   Updated: 2022/02/01 15:14:14 by ayalman          ###   ########.Tr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_toupper(int a)
+int	ft_toupper(int a)
 {
 	if (a >= 'a' && a <= 'z')
 		a -= 32;

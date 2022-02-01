@@ -6,36 +6,81 @@
 /*   By: ayalman <ayalman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 21:37:54 by ayalman           #+#    #+#             */
-/*   Updated: 2022/01/31 22:13:18 by ayalman          ###   ########.fr       */
+/*   Updated: 2022/02/02 01:08:22 by ayalman          ###   ########.Tr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char *ft_strtrim(char *s)
+static int	ft_trim_start(const char *s, const char *set)
 {
-    int index;
-    int trim_start;
-    int trim_end;
-    char *ptr;
+	int	i;
+	int	j;
 
-    index = 0;
-    trim_start = 0;
-    trim_end = ft_strlen(s);
+	i = 0;
+	while (s[i])
+	{
+		j = 0;
+		while (set[j])
+		{
+			if (s[i] == set[j])
+			{
+				i++;
+				break ;
+			}
+			j++;
+		}
+		if (!set[j])
+			break ;
+	}
+	return (i);
+}
 
-    while (s[trim_start] == ' ')
-        trim_start++;
-    while (s[trim_end] == ' ')
-        trim_end--;
-    ptr = malloc ((trim_end - trim_start) * sizeof(char) + 1);
-    if (!ptr)
-        return (NULL);
-    while (trim_start <= trim_end)
-    {
-        ptr[index] = s[trim_start];
-        index++;
-        trim_start++; 
-    }
-    ptr[index] = '\0';
-    return (ptr);
+static int	ft_trim_end(const char *s, const char *set)
+{
+	int	i;
+	int	j;
+
+	i = ft_strlen(s) - 1;
+	while (s[i])
+	{
+		j = 0;
+		while (set[j])
+		{
+			if (s[i] == set[j])
+			{
+				i--;
+				break ;
+			}
+			j++;
+		}
+		if (!set[j])
+			break ;
+	}
+	return (i);
+}
+
+char	*ft_strtrim(const char *s, const char *set)
+{
+	int		i;
+	int		j;
+	int		index;
+	char	*ptr;
+
+	i = ft_trim_end(s, set);
+	j = ft_trim_start(s, set);
+	if (i < j)
+		return (ft_strdup(""));
+	ptr = malloc (sizeof(char) * (i - j + 1));
+	if (!ptr)
+		return (NULL);
+	index = 0;
+	while (j <= i)
+	{
+		ptr[index] = s[j];
+		index++;
+		j++;
+	}
+	ptr[index] = '\0';
+	return (ptr);
 }
