@@ -26,6 +26,6 @@ void	*ft_memmove(void *destination, const void *source, size_t n)
 			*(dest + n) = *(src + n);
 	else
 		while (i++ < n)
-			*dest(dest + i) = *(src + i);
+			*(dest + i) = *(src + i);
 	return (dest);
 }

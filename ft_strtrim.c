@@ -27,7 +27,7 @@ char *ft_strtrim(char *s)
         trim_start++;
     while (s[trim_end] == ' ')
         trim_end--;
-    ptr = malloc ((trim_end - strim_start) * sizeof(char));
+    ptr = malloc ((trim_end - trim_start) * sizeof(char) + 1);
     if (!ptr)
         return (NULL);
     while (trim_start <= trim_end)

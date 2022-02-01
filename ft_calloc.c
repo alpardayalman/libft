@@ -18,6 +18,6 @@ void    *ft_calloc(size_t amount, size_t n)
     ptr = malloc(amount * n);
     if (!ptr)
         return (NULL);
-    ft_bzero(ptr, count);
+    ft_bzero(ptr, amount);
     return (ptr);
 }

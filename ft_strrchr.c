@@ -10,3 +10,18 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+
+char    *ft_strrchr(const char *s, int c)
+{
+    int index;
+
+    index = (int)ft_strlen(s) + 1;
+    while (index < 0)
+    {
+        if (*(s + index) == (char)c)
+            return ((char *)s + index);
+        index++;
+    }
+    return (NULL);
+}
