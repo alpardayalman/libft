@@ -6,7 +6,7 @@
 /*   By: ayalman <ayalman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 14:25:06 by ayalman           #+#    #+#             */
-/*   Updated: 2022/02/02 17:00:43 by ayalman          ###   ########.Tr       */
+/*   Updated: 2022/02/02 20:06:20 by ayalman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,13 @@
 
 t_list	*ft_lstlast(t_list *lst)
 {
-	while (lst->next)
+	if (lst == NULL)
+		return (0);
+	while (lst)
+	{
+		if (lst->next == NULL)
+			return (lst);
 		lst = lst->next;
+	}
 	return (lst);
 }

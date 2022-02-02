@@ -6,7 +6,7 @@
 /*   By: ayalman <ayalman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 21:36:38 by ayalman           #+#    #+#             */
-/*   Updated: 2022/02/01 15:49:18 by ayalman          ###   ########.Tr       */
+/*   Updated: 2022/02/02 21:21:40 by ayalman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,6 @@ void	*ft_calloc(size_t amount, size_t n)
 	ptr = malloc (amount * n);
 	if (!ptr)
 		return (NULL);
-	ft_bzero(ptr, amount);
+	ft_bzero(ptr, amount * n);
 	return (ptr);
 }

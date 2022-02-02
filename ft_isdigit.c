@@ -6,11 +6,11 @@
 /*   By: ayalman <ayalman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 14:43:44 by ayalman           #+#    #+#             */
-/*   Updated: 2022/01/31 16:14:12 by ayalman          ###   ########.Tr       */
+/*   Updated: 2022/02/02 19:38:29 by ayalman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-_Bool	ft_isdigit(int a)
+int	ft_isdigit(int a)
 {
 	return (a >= '0' && a <= '9');
 }

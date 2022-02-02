@@ -6,7 +6,7 @@
 /*   By: ayalman <ayalman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 21:37:51 by ayalman           #+#    #+#             */
-/*   Updated: 2022/02/01 17:30:52 by ayalman          ###   ########.Tr       */
+/*   Updated: 2022/02/02 20:59:36 by ayalman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ char	*ft_strrchr(const char *s, int c)
 	int		index;
 	char	*ptr;
 
-	if (!s)
-		return (NULL);
+	if (c > 256)
+		c -= 256;
 	index = -1;
 	ptr = 0;
 	while (s[++index])
