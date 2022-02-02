@@ -6,7 +6,7 @@
 /*   By: ayalman <ayalman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 20:06:16 by ayalman           #+#    #+#             */
-/*   Updated: 2022/02/02 20:58:23 by ayalman          ###   ########.fr       */
+/*   Updated: 2022/02/03 01:32:55 by ayalman          ###   ########.Tr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,7 @@ void	*ft_memcpy(void *destination, const void *source, size_t n)
 		return (destination);
 	dest = (char *) destination;
 	src = (const char *) source;
-	while (n > 0)
-	{
-		n--;
+	while (n--)
 		dest[n] = src[n];
-	}
 	return (dest);
 }

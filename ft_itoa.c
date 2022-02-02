@@ -6,13 +6,13 @@
 /*   By: ayalman <ayalman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 21:36:44 by ayalman           #+#    #+#             */
-/*   Updated: 2022/02/02 23:38:43 by ayalman          ###   ########.fr       */
+/*   Updated: 2022/02/03 01:58:53 by ayalman          ###   ########.Tr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int		ft_pic(long n)
+static int	ft_pic(long n)
 {
 	size_t	estim;
 
@@ -30,7 +30,7 @@ static int		ft_pic(long n)
 	return (estim);
 }
 
-static char		*ft_oc(char *rtn, long nbr, int len, int neg)
+static char	*ft_oc(char *rtn, long nbr, int len, int neg)
 {
 	if (nbr != 0)
 		rtn = malloc(sizeof(char) * (len + 1));
@@ -56,7 +56,7 @@ static char		*ft_oc(char *rtn, long nbr, int len, int neg)
 	return (rtn);
 }
 
-char			*ft_itoa(int n)
+char	*ft_itoa(int n)
 {
 	int		len;
 	char	*rtn;
@@ -67,7 +67,8 @@ char			*ft_itoa(int n)
 	len = ft_pic(nbr);
 	rtn = 0;
 	neg = 0;
-	if (!(rtn = ft_oc(rtn, nbr, len, neg)))
+	rtn = ft_oc(rtn, nbr, len, neg);
+	if (!rtn)
 		return (0);
 	return (rtn);
 }

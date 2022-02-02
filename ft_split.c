@@ -6,7 +6,7 @@
 /*   By: ayalman <ayalman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 21:37:24 by ayalman           #+#    #+#             */
-/*   Updated: 2022/02/03 00:32:50 by ayalman          ###   ########.fr       */
+/*   Updated: 2022/02/03 02:23:16 by ayalman          ###   ########.Tr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ static size_t	ft_getsep(char const *s, char c)
 	nos = 0;
 	while (s[i] != '\0')
 	{
-		if (s[i] == c)
+		if (s[i] != c)
 		{
 			nos++;
-			while (s[i] == c)
+			while (s[i] != c)
 				i++;
 			continue ;
 		}
@@ -33,55 +33,59 @@ static size_t	ft_getsep(char const *s, char c)
 	return (nos);
 }
 
-static char	*ft_make_s(char const *s, int s_i, int e_i)
+static char	*ft_make_s(size_t start, size_t i, const char *s)
 {
 	char	*final;
-	size_t	i;
+	size_t	index;
 
-	final = (char *) malloc(sizeof(char) * (e_i - s_i + 1));
+	final = (char *) malloc(sizeof(char) * (i - start + 1));
 	if (!final)
 		return (NULL);
+	index = 0;
+	while (start < i)
+		final[index++] = s[start++];
+	final[index] = '\0';
+	return (final);
+}
+
+static char	**ft_final(size_t nos, char const *s, char c, char **final)
+{
+	size_t	maker;
+	size_t	i;
+	size_t	start;
+
+	maker = 0;
 	i = 0;
-	while (s_i < e_i)
+	while (maker < nos)
 	{
-		final[i] = s[s_i];
-		s_i++;
+		if (s[i] != c)
+		{
+			start = i;
+			while (s[i] != c)
+				i++;
+			final[maker] = ft_make_s(start, i, s);
+			maker++;
+		}
 		i++;
 	}
-	final[i] = '\0';
+	final[maker] = NULL;
 	return (final);
 }
 
 char	**ft_split(char const *s, char c)
 {
 	char	**final;
-	size_t	i;
 	size_t	nos;
-	size_t	maker;
-	size_t	start;
 
 	if (!s)
 		return (NULL);
-	nos = ft_getsep(s, c) + 1;
+	nos = ft_getsep(s, c);
 	final = (char **) malloc(sizeof(char *) * (nos + 1));
 	if (!final)
 		return (NULL);
-	if (s && c)
-	{
-		maker = 0;
-		i = 0;
-		while (maker < nos)
-		{
-			while (s[i] == c)
-				i++;
-			start = i;
-			while (s[i] != c && s[i] != '\0')
-				i++;
-			if (start != i)
-				final[maker] = ft_make_s(s, start, i);
-			maker++;
-		}
-		final[maker] = NULL;
-	}
-	return (final);
+	final = ft_final(nos, s, c, final);
+	if (final)
+		return (final);
+	else
+		return (NULL);
 }

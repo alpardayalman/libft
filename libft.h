@@ -6,7 +6,7 @@
 /*   By: ayalman <ayalman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 14:05:52 by ayalman           #+#    #+#             */
-/*   Updated: 2022/02/02 16:54:21 by ayalman          ###   ########.Tr       */
+/*   Updated: 2022/02/03 00:19:22 by ayalman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@ typedef struct s_list
 	struct s_list	*next;
 }					t_list;
 
-_Bool	ft_isalpha(int a);
-_Bool	ft_isalnum(int a);
-_Bool	ft_isascii(int a);
-_Bool	ft_isdigit(int a);
-_Bool	ft_isprint(int a);
+int		ft_isalpha(int a);
+int		ft_isalnum(int a);
+int		ft_isascii(int a);
+int		ft_isdigit(int a);
+int		ft_isprint(int a);
 
 int		ft_toupper(int a);
 int		ft_tolower(int a);

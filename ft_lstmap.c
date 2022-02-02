@@ -6,7 +6,7 @@
 /*   By: ayalman <ayalman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 14:25:08 by ayalman           #+#    #+#             */
-/*   Updated: 2022/02/03 00:20:21 by ayalman          ###   ########.fr       */
+/*   Updated: 2022/02/03 01:42:47 by ayalman          ###   ########.Tr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,27 @@
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	t_list *new_list;
-	t_list *save;
+	t_list	*new;
+	t_list	*decoy;
 
 	if (!lst || !f || !del)
 		return (0);
-	new_list = ft_lstnew(f(lst->content));
-	if (!new_list)
-		return (0);
-	save = new_list;
+	new = ft_lstnew(f(lst->content));
+	if (!new)
+		return (NULL);
+	decoy = new;
 	lst = lst->next;
 	while (lst)
 	{
-		new_list->next = ft_lstnew(f(lst->content));
-		if (!new_list->next)
+		new->next = ft_lstnew(f(lst->content));
+		if (!new->next)
 		{
-			ft_lstclear(&save, del);
+			ft_lstclear(&decoy, del);
 			return (0);
 		}
-		new_list = new_list->next;
+		new = new->next;
 		lst = lst->next;
 	}
-	new_list->next = NULL;
-	return (save);
+	new->next = NULL;
+	return (decoy);
 }

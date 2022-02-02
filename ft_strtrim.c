@@ -6,7 +6,7 @@
 /*   By: ayalman <ayalman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 21:37:54 by ayalman           #+#    #+#             */
-/*   Updated: 2022/02/02 23:02:55 by ayalman          ###   ########.fr       */
+/*   Updated: 2022/02/03 02:20:08 by ayalman          ###   ########.Tr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,13 +78,13 @@ char	*ft_strtrim(const char *s, const char *set)
 		if (!ptr)
 			return (NULL);
 			index = 0;
-			while (j <= i)
-			{
-				ptr[index] = s[j];
-				index++;
-				j++;
-			}
-			ptr[index] = '\0';
+		while (j <= i)
+		{
+			ptr[index] = s[j];
+			index++;
+			j++;
+		}
+		ptr[index] = '\0';
 	}
 	return (ptr);
 }
