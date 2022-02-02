@@ -6,7 +6,7 @@
 /*   By: ayalman <ayalman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 21:37:17 by ayalman           #+#    #+#             */
-/*   Updated: 2022/02/01 16:10:39 by ayalman          ###   ########.Tr       */
+/*   Updated: 2022/02/02 23:42:17 by ayalman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,10 @@ void	ft_putendl_fd(char *s, int fd)
 {
 	int	i;
 
-	i = ft_strlen(s);
-	write(fd, s, i);
+	if (s)
+	{
+		i = ft_strlen(s);
+		write(fd, s, i);
+	}
 	write(fd, "\n", 1);
 }

@@ -6,7 +6,7 @@
 /*   By: ayalman <ayalman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 21:37:54 by ayalman           #+#    #+#             */
-/*   Updated: 2022/02/02 01:08:22 by ayalman          ###   ########.Tr       */
+/*   Updated: 2022/02/02 23:02:55 by ayalman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,20 +67,24 @@ char	*ft_strtrim(const char *s, const char *set)
 	int		index;
 	char	*ptr;
 
-	i = ft_trim_end(s, set);
-	j = ft_trim_start(s, set);
-	if (i < j)
-		return (ft_strdup(""));
-	ptr = malloc (sizeof(char) * (i - j + 1));
-	if (!ptr)
-		return (NULL);
-	index = 0;
-	while (j <= i)
+	ptr = NULL;
+	if (s && set)
 	{
-		ptr[index] = s[j];
-		index++;
-		j++;
+		i = ft_trim_end(s, set);
+		j = ft_trim_start(s, set);
+		if (i < j)
+			return (ft_strdup(""));
+		ptr = malloc (sizeof(char) * (i - j + 1));
+		if (!ptr)
+			return (NULL);
+			index = 0;
+			while (j <= i)
+			{
+				ptr[index] = s[j];
+				index++;
+				j++;
+			}
+			ptr[index] = '\0';
 	}
-	ptr[index] = '\0';
 	return (ptr);
 }

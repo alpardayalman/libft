@@ -6,7 +6,7 @@
 /*   By: ayalman <ayalman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 21:37:24 by ayalman           #+#    #+#             */
-/*   Updated: 2022/02/02 01:03:28 by ayalman          ###   ########.Tr       */
+/*   Updated: 2022/02/03 00:32:50 by ayalman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,23 +60,28 @@ char	**ft_split(char const *s, char c)
 	size_t	maker;
 	size_t	start;
 
+	if (!s)
+		return (NULL);
 	nos = ft_getsep(s, c) + 1;
 	final = (char **) malloc(sizeof(char *) * (nos + 1));
 	if (!final)
 		return (NULL);
-	maker = 0;
-	i = 0;
-	while (maker < nos)
+	if (s && c)
 	{
-		while (s[i] == c)
-			i++;
-		start = i;
-		while (s[i] != c && s[i] != '\0')
-			i++;
-		if (start != i)
-			final[maker] = ft_make_s(s, start, i);
-		maker++;
+		maker = 0;
+		i = 0;
+		while (maker < nos)
+		{
+			while (s[i] == c)
+				i++;
+			start = i;
+			while (s[i] != c && s[i] != '\0')
+				i++;
+			if (start != i)
+				final[maker] = ft_make_s(s, start, i);
+			maker++;
+		}
+		final[maker] = NULL;
 	}
-	final[maker] = NULL;
 	return (final);
 }

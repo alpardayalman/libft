@@ -6,34 +6,32 @@
 /*   By: ayalman <ayalman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 21:36:44 by ayalman           #+#    #+#             */
-/*   Updated: 2022/02/01 22:22:50 by ayalman          ###   ########.Tr       */
+/*   Updated: 2022/02/02 23:38:43 by ayalman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_lengive(long n)
+static int		ft_pic(long n)
 {
-	size_t	len;
+	size_t	estim;
 
-	len = 0;
+	estim = 0;
 	if (n < 0)
 	{
-		len++;
+		estim++;
 		n = -n;
 	}
 	while (n >= 1)
 	{
-		len++;
+		estim++;
 		n /= 10;
 	}
-	return (len);
+	return (estim);
 }
 
-static char	*ft_change(char *rtn, long nbr, int len)
+static char		*ft_oc(char *rtn, long nbr, int len, int neg)
 {
-	int	neg;
-
 	if (nbr != 0)
 		rtn = malloc(sizeof(char) * (len + 1));
 	else
@@ -42,7 +40,7 @@ static char	*ft_change(char *rtn, long nbr, int len)
 		return (0);
 	if (nbr < 0)
 	{
-		neg = 1;
+		neg++;
 		nbr = -nbr;
 	}
 	rtn[len] = '\0';
@@ -58,17 +56,18 @@ static char	*ft_change(char *rtn, long nbr, int len)
 	return (rtn);
 }
 
-char	*ft_itoa(int n)
+char			*ft_itoa(int n)
 {
 	int		len;
 	char	*rtn;
 	long	nbr;
+	int		neg;
 
 	nbr = n;
-	len = ft_lengive(nbr);
+	len = ft_pic(nbr);
 	rtn = 0;
-	rtn = ft_change(rtn, nbr, len);
-	if (!(rtn))
+	neg = 0;
+	if (!(rtn = ft_oc(rtn, nbr, len, neg)))
 		return (0);
 	return (rtn);
 }
