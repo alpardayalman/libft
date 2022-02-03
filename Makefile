@@ -6,7 +6,7 @@
 #    By: ayalman <ayalman@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/31 22:49:43 by ayalman           #+#    #+#              #
-#    Updated: 2022/02/02 17:07:36 by ayalman          ###   ########.Tr        #
+#    Updated: 2022/02/03 18:28:40 by ayalman          ###   ########.Tr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,6 +45,6 @@ re: fclean all
 
 bonus: $(OBJS) $(BOBJS)
 		ar rcs $(NAME) $(OBJS) $(BOBJS)
-		@echo "\n--> ALL COMPILED"
+		@echo "\n--> ALP COMPILED"
 
 .PHONY: all clean fclean re bonus
