@@ -6,9 +6,11 @@
 /*   By: ayalman <ayalman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 14:53:36 by ayalman           #+#    #+#             */
-/*   Updated: 2022/02/02 19:38:36 by ayalman          ###   ########.fr       */
+/*   Updated: 2022/02/03 19:46:47 by ayalman          ###   ########.Tr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 int	ft_isprint(int a)
 {

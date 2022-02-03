@@ -6,7 +6,7 @@
 /*   By: ayalman <ayalman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 14:25:08 by ayalman           #+#    #+#             */
-/*   Updated: 2022/02/03 01:42:47 by ayalman          ###   ########.Tr       */
+/*   Updated: 2022/02/03 18:29:52 by ayalman          ###   ########.Tr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	t_list	*new;
 	t_list	*decoy;
 
-	if (!lst || !f || !del)
+	if (!lst || !f)
 		return (0);
 	new = ft_lstnew(f(lst->content));
 	if (!new)

@@ -6,32 +6,56 @@
 /*   By: ayalman <ayalman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 15:06:28 by ayalman           #+#    #+#             */
-/*   Updated: 2022/01/31 23:06:45 by ayalman          ###   ########.Tr       */
+/*   Updated: 2022/02/03 19:44:31 by ayalman          ###   ########.Tr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
+#include "limits.h"
 
-int	ft_atoi(const char *s)
+static int	ft_isspace(char chr)
 {
-	int	sum;
-	int	index;
-	int	sign;
+	if ((chr >= 9 && chr <= 13) || chr == ' ')
+		return (1);
+	return (0);
+}
 
-	sign = 1;
+static int	ft_isaret(char c, int *index)
+{
+	int	isaret;
+
+	isaret = 1;
+	if (c == '-' || c == '+')
+	{
+		if (c == '-')
+			isaret *= -1;
+		*index += 1;
+	}
+	return (isaret);
+}
+
+int	ft_atoi(const char *nptr)
+{
+	unsigned long	ret_val;
+	int				index;
+	int				isaret;
+
 	index = 0;
-	sum = 0;
-	while (s[index] == 32 || (s[index] >= 9 && s[index] <= 13))
+	ret_val = 0;
+	if (*nptr == '\0')
+		return (0);
+	while (ft_isspace(nptr[index]))
 		index++;
-	if (s[index] == '-' || s[index] == '+')
+	isaret = ft_isaret(nptr[index], &index);
+	while (nptr[index] >= '0' && nptr[index] <= '9')
 	{
-		if (s[index] == '-')
-			sign = -1;
+		ret_val = (ret_val * 10) + (nptr[index] - '0');
 		index++;
 	}
-	while (s[index] >= '0' && s[index] <= '9')
+	if (ret_val > LONG_MAX)
 	{
-		sum *= 10;
-		sum += s[index] - '0';
-		index++;
+		if (isaret == -1)
+			return (0);
+		return (-1);
 	}
-	return (sum * sign);
+	return (ret_val * isaret);
 }
