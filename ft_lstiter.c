@@ -6,7 +6,7 @@
 /*   By: ayalman <ayalman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 14:25:04 by ayalman           #+#    #+#             */
-/*   Updated: 2022/02/03 19:59:29 by ayalman          ###   ########.Tr       */
+/*   Updated: 2022/02/04 21:31:16 by ayalman          ###   ########.Tr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,12 @@ void	ft_lstiter(t_list *lst, void (*f)(void *))
 	t_list	*decoy;
 
 	decoy = lst;
-	while (decoy)
+	if (lst)
 	{
-		f(decoy->content);
-		decoy = decoy->next;
+		while (decoy)
+		{
+			f(decoy->content);
+			decoy = decoy->next;
+		}
 	}
 }

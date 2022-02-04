@@ -6,7 +6,7 @@
 /*   By: ayalman <ayalman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 14:24:59 by ayalman           #+#    #+#             */
-/*   Updated: 2022/02/02 16:56:22 by ayalman          ###   ########.Tr       */
+/*   Updated: 2022/02/04 21:38:15 by ayalman          ###   ########.Tr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,10 @@ void	ft_lstclear(t_list **lst, void (*del)(void *))
 	decoy = *lst;
 	while (decoy)
 	{
-		t = decoy;
-		ft_lstdelone(t, del);
-		decoy = decoy->next;
+		(*del)(decoy->content);
+		t = decoy->next;
+		free(decoy);
+		decoy = t;
 	}
-	*lst = decoy;
+	*lst = NULL;
 }
