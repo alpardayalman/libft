@@ -6,37 +6,34 @@
 /*   By: ayalman <ayalman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 21:37:56 by ayalman           #+#    #+#             */
-/*   Updated: 2022/02/03 03:57:01 by ayalman          ###   ########.Tr       */
+/*   Updated: 2022/02/04 21:22:55 by ayalman          ###   ########.Tr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_substr(const char *source, unsigned int start, size_t len)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	size_t	index;
-	size_t	j;
-	char	*ptr;
+	char	*res;
+	size_t	i;
+	size_t	s_len;
 
-	ptr = NULL;
-	if (source)
+	if (!s)
+		return (NULL);
+	s_len = ft_strlen(s);
+	if (start >= s_len || s_len == 0 || len == 0)
+		return (ft_strdup(""));
+	if (len > s_len - start)
+		len = s_len - start;
+	res = (char *)malloc((len + 1) * sizeof(char));
+	if (!res)
+		return (NULL);
+	i = 0;
+	while (s[start + i] && i < len)
 	{
-		if (start >= ft_strlen(source))
-			start = ft_strlen(source) % start;
-		index = 0;
-		while (index < len && source[(size_t)start + index] != '\0')
-			index++;
-		j = 0;
-		ptr = malloc(sizeof(char) * index + 1);
-		if (!ptr)
-			return (NULL);
-		while (j < index)
-		{
-			ptr[j] = source[(size_t)start + j];
-			j++;
-		}
-		ptr[index] = '\0';
-		return (ptr);
+		res[i] = s[start + i];
+		i++;
 	}
-	return (NULL);
+	res[i] = '\0';
+	return (res);
 }
