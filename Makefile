@@ -10,41 +10,92 @@
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = ft_isalnum.c ft_isprint.c ft_memcmp.c  ft_putchar_fd.c ft_split.c \
-					ft_strlcat.c ft_strncmp.c ft_substr.c ft_atoi.c ft_isalpha.c \
-					ft_itoa.c ft_memcpy.c  ft_putendl_fd.c ft_strchr.c  ft_strlcpy.c \
-					ft_strnstr.c ft_tolower.c ft_bzero.c   ft_isascii.c \
-					ft_memmove.c ft_putnbr_fd.c  ft_strdup.c  ft_strlen.c  ft_strrchr.c \
-					ft_toupper.c ft_calloc.c  ft_isdigit.c ft_memchr.c  ft_memset.c  \
-					ft_putstr_fd.c  ft_strjoin.c ft_strmapi.c ft_strtrim.c ft_striteri.c
+NAME		=	libft.a
+INCLUDES	=	include/
+SRC_DIR 	=	source/
+OBJ_DIR		=	object/
+CC			=	gcc
+CFLAGS		=	-Wall -Werror -Wextra -I
+RM			=	rm -f
+AR			=	ar rcs
 
-BSRCS = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c ft_lstdelone.c \
-					ft_lstclear.c ft_lstiter.c ft_lstmap.c 
+#Colors
 
-OBJS = $(SRCS:.c=.o)
+DEF_COLOR = \033[0;39m
+GRAY = \033[0;90m
+RED = \033[0;91m
+GREEN = \033[0;92m
+YELLOW = \033[0;93m
+BLUE = \033[0;94m
+MAGENTA = \033[0;95m
+CYAN = \033[0;96m
+WHITE = \033[0;97m
 
-BOBJS = $(BSRCS:.c=.o)
+#Sources
 
-CC = gcc
-RM = rm -f
-CFLAGS = -Wall -Wextra -Werror -I.
-NAME = libft.a
+MAIN_DIR	=	ft_lib/
+_MAIN_		=	ft_isalnum ft_isalpha ft_isascii ft_isdigit ft_isprint \
+				ft_bzero ft_calloc ft_memchr ft_memcmp ft_memmove ft_memset \
+				ft_putchar_fd ft_putendl_fd ft_putnbr_fd ft_putstr_fd ft_atoi \
+				ft_itoa ft_tolower ft_toupper ft_split ft_strchr ft_strdup \
+				ft_striteri ft_strjoin \
+				ft_strlcat ft_strlcpy ft_strlen ft_strmapi ft_strncmp \
+				ft_strnstr ft_strrchr ft_strtrim ft_substr \
 
-all: $(NAME)
+#EXTRA_DIR	=	extra/ "extra directories"
+#EXTRA		=	"extra functions" you can add as many functions as you need.
 
-$(NAME): $(OBJS)
-		ar rcs $(NAME) $(OBJS)
-		@echo "\n--> Compiling is complete"
-clean: 
-		$(RM) $(OBJS) $(BOBJS)
-		@echo "\n--> Clensed"
-fclean: clean
-		$(RM) $(NAME)
-		@echo "\n--> FULL CLENSED"
-re: fclean all
+BONUS_DIR	=	bonus/
+BONUS		=	ft_lstadd_back ft_lstadd_front ft_lstclear ft_lstdelone \
+				ft_lstiter ft_lstlast ft_lstmap ft_lstnew ft_lstsize
 
-bonus: $(OBJS) $(BOBJS)
-		ar rcs $(NAME) $(OBJS) $(BOBJS)
-		@echo "\n--> ALP COMPILED"
+SRC_FILES+=$(addprefix $(MAIN_DIR),$(_MAIN_))
+#SRC_FILES+=$(addprefix $(EXTRA_DIR),$(EXTRA))
+BONUS_FILES+=$(addprefix $(BONUS_DIR),$(BONUS))
 
-.PHONY: all clean fclean re bonus
+SRC 		= 	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
+OBJ 		= 	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
+BONUS_OBJ	= 	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(BONUS_FILES)))
+
+
+###
+
+OBJF		=	.cache_exists
+
+all:		$(NAME)
+
+$(NAME):	$(OBJ)
+			@$(AR) $(NAME) $(OBJ)
+			@ranlib $(NAME)
+			@echo "$(GREEN)--> Protocol compiled.$(DEF_COLOR)"
+
+$(OBJ_DIR)%.o : $(SRC_DIR)%.c | $(OBJF)
+			@echo "$(YELLOW)--> Compiling: $< $(DEF_COLOR)"
+			@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+
+$(OBJF):
+			@mkdir -p $(OBJ_DIR)
+			@mkdir -p $(OBJ_DIR)$(MAIN_DIR)
+#			@mkdir -p $(OBJ_DIR)$(EXTRA_DIR)
+			@mkdir -p $(OBJ_DIR)$(BONUS_DIR)
+
+bonus:		$(BONUS_OBJ)
+			@$(AR) $(NAME) $(BONUS_OBJ)
+			@echo "$(GREEN)--> Bonus Objectives are compiled.$(DEF_COLOR)"
+
+clean:
+			@$(RM) -rf $(OBJ_DIR)
+			@$(RM) -f $(OBJF)
+			@echo "$(RED)--> Files clensed.$(DEF_COLOR)"
+
+fclean:		clean
+			@$(RM) -f $(NAME)
+			@echo "$(RED)--> Executable files clensed.$(DEF_COLOR)"
+
+re:			fclean all
+			@echo "$(GREEN)--> Protocol rebuilt.$(DEF_COLOR)"
+
+norm:
+			@norminette $(SRC) $(INCLUDES) | grep -v Norme -B1 || true
+
+.PHONY:		all clean fclean re norm
