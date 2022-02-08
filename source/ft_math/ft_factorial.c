@@ -1,0 +1,18 @@
+#include "libft.h"
+
+static int req(int faq, int nb)
+{
+    faq *= nb--;
+    if (nb > 0)
+        return (req(faq,nb));
+    return (faq);
+}
+
+int ft_factorial(int nb)
+{
+    if (nb < 0)
+        return (0);
+    if (nb == 0)
+        return (1);
+    return (req(1, nb));
+}

@@ -15,6 +15,7 @@
 
 # include <unistd.h>
 # include <stdlib.h>
+# include <stdbool.h>
 
 typedef struct s_list
 {
@@ -73,4 +74,10 @@ void	ft_lstdelone(t_list *lst, void (*del)(void *));
 void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+//Math
+void	ft_quick(int *array, int low, int high);
+int		ft_power(int nb, int power);
+bool    ft_isprime(int nb);
+int		ft_fib(int index);
+int		ft_factorial(int nb);
 #endif

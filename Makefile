@@ -45,13 +45,17 @@ _MAIN_		=	ft_isalnum ft_isalpha ft_isascii ft_isdigit ft_isprint \
 #EXTRA_DIR	=	extra/ "extra directories"
 #EXTRA		=	"extra functions" you can add as many functions as you need.
 
+MATH_DIR	= 	ft_math/
+_MATH_		= 	ft_factorial ft_fib ft_isprime ft_power ft_quick
+
 BONUS_DIR	=	bonus/
-BONUS		=	ft_lstadd_back ft_lstadd_front ft_lstclear ft_lstdelone \
+_BONUS_		=	ft_lstadd_back ft_lstadd_front ft_lstclear ft_lstdelone \
 				ft_lstiter ft_lstlast ft_lstmap ft_lstnew ft_lstsize
 
 SRC_FILES+=$(addprefix $(MAIN_DIR),$(_MAIN_))
 #SRC_FILES+=$(addprefix $(EXTRA_DIR),$(EXTRA))
-BONUS_FILES+=$(addprefix $(BONUS_DIR),$(BONUS))
+SRC_FILES+=$(addprefix $(MATH_DIR),$(_MATH_))
+BONUS_FILES+=$(addprefix $(BONUS_DIR),$(_BONUS_))
 
 SRC 		= 	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJ 		= 	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
@@ -77,6 +81,7 @@ $(OBJF):
 			@mkdir -p $(OBJ_DIR)
 			@mkdir -p $(OBJ_DIR)$(MAIN_DIR)
 #			@mkdir -p $(OBJ_DIR)$(EXTRA_DIR)
+			@mkdir -p $(OBJ_DIR)$(MATH_DIR)
 			@mkdir -p $(OBJ_DIR)$(BONUS_DIR)
 
 bonus:		$(BONUS_OBJ)
