@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayalman <ayalman@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ardayalman <ardayalman@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 14:43:44 by ayalman           #+#    #+#             */
-/*   Updated: 2022/02/03 19:46:33 by ayalman          ###   ########.Tr       */
+/*   Updated: 2022/04/14 00:52:37 by ardayalman       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,4 +15,20 @@
 int	ft_isdigit(int a)
 {
 	return (a >= '0' && a <= '9');
+}
+
+bool	ft_str_isnum(char *string)
+{
+	int	i;
+
+	i = 0;
+	if (string[i] == '-')
+		i++;
+	while (string[i])
+	{
+		if (ft_isdigit(string[i]))
+			return (false);
+		i++;
+	}
+	return (true);
 }

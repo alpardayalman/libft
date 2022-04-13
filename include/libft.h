@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayalman <ayalman@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ardayalman <ardayalman@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 14:05:52 by ayalman           #+#    #+#             */
-/*   Updated: 2022/02/03 00:19:22 by ayalman          ###   ########.fr       */
+/*   Updated: 2022/04/14 01:16:04 by ardayalman       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,12 @@
 # include <stdlib.h>
 # include <stdbool.h>
 
+# define ANSI_RED		"\x1b[31m"
+# define ANSI_BLUE		"\x1b[34m"
+# define ANSI_GREEN		"\x1b[32m"
+# define ANSI_YELLOW	"\x1b[33m"
+# define ANSI_RESET		"\x1b[0m"
+
 typedef struct s_list
 {
 	void			*content;
@@ -24,13 +30,19 @@ typedef struct s_list
 }					t_list;
 
 int		ft_isalpha(int a);
+bool	ft_str_isalpha(char *str);
 int		ft_isalnum(int a);
+bool	ft_str_isnum(char *string);
 int		ft_isascii(int a);
 int		ft_isdigit(int a);
 int		ft_isprint(int a);
 
+
 int		ft_toupper(int a);
+void	ft_toupper_string(char *string);
 int		ft_tolower(int a);
+void	ft_tolower_string(char *string);
+
 int		ft_atoi(const char *s);
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
 int		ft_strncmp(const char *s_1, const char *s_2, size_t n);
@@ -55,6 +67,7 @@ void	ft_putchar_fd(char a, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 void	ft_putstr_fd(char *s, int fd);
+void	ft_putstr_color_fd(char *color, char *s, int fd);
 
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 char	*ft_substr(const char *source, unsigned int start, size_t len);
@@ -77,7 +90,8 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 //Math
 void	ft_quick(int *array, int low, int high);
 int		ft_power(int nb, int power);
-bool    ft_isprime(int nb);
+bool	ft_isprime(int nb);
 int		ft_fib(int index);
 int		ft_factorial(int nb);
+int		ft_abs(int a)
 #endif
