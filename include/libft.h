@@ -6,7 +6,7 @@
 /*   By: ardayalman <ardayalman@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 14:05:52 by ayalman           #+#    #+#             */
-/*   Updated: 2022/04/14 01:16:04 by ardayalman       ###   ########.fr       */
+/*   Updated: 2022/04/14 02:39:33 by ardayalman       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,5 +93,5 @@ int		ft_power(int nb, int power);
 bool	ft_isprime(int nb);
 int		ft_fib(int index);
 int		ft_factorial(int nb);
-int		ft_abs(int a)
+int		ft_abs(int a);
 #endif
