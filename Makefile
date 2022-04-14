@@ -6,7 +6,7 @@
 #    By: ardayalman <ardayalman@student.42.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/31 22:49:43 by ayalman           #+#    #+#              #
-#    Updated: 2022/04/14 14:59:11 by ardayalman       ###   ########.fr        #
+#    Updated: 2022/04/14 15:24:27 by ardayalman       ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,10 +56,14 @@ PRINTF_DIR	=	ft_printf/
 _PRINTF_	=	ft_outils ft_printf ft_count ft_printf_hex_high ft_printf_hex_low \
 				ft_printf_pointer ft_printf_string ft_putnbr
 
+GNL_DIR		=	ft_gnl/
+_GNL_		=	get_next_line
+
 SRC_FILES+=$(addprefix $(MAIN_DIR),$(_MAIN_))
 #SRC_FILES+=$(addprefix $(EXTRA_DIR),$(EXTRA))
 SRC_FILES+=$(addprefix $(MATH_DIR),$(_MATH_))
 SRC_FILES+=$(addprefix $(PRINTF_DIR),$(_PRINTF_))
+SRC_FILES+=$(addprefix $(GNL_DIR),$(_GNL_))
 BONUS_FILES+=$(addprefix $(BONUS_DIR),$(_BONUS_))
 
 SRC 		= 	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
@@ -88,6 +92,7 @@ $(OBJF):
 #			@mkdir -p $(OBJ_DIR)$(EXTRA_DIR)
 			@mkdir -p $(OBJ_DIR)$(MATH_DIR)
 			@mkdir -p $(OBJ_DIR)$(PRINTF_DIR)
+			@mkdir -p $(OBJ_DIR)$(GNL_DIR)
 			@mkdir -p $(OBJ_DIR)$(BONUS_DIR)
 
 bonus:		$(BONUS_OBJ)

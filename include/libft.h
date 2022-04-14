@@ -6,7 +6,7 @@
 /*   By: ardayalman <ardayalman@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 14:05:52 by ayalman           #+#    #+#             */
-/*   Updated: 2022/04/14 15:04:51 by ardayalman       ###   ########.fr       */
+/*   Updated: 2022/04/14 15:12:13 by ardayalman       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,17 @@
 # include <stdbool.h>
 # include <stdarg.h>
 # include <limits.h>
+# include <fcntl.h>
 
 # define ANSI_RED		"\x1b[31m"
 # define ANSI_BLUE		"\x1b[34m"
 # define ANSI_GREEN		"\x1b[32m"
 # define ANSI_YELLOW	"\x1b[33m"
 # define ANSI_RESET		"\x1b[0m"
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 4
+# endif
 
 typedef struct s_list
 {
@@ -38,7 +43,6 @@ bool	ft_str_isnum(char *string);
 int		ft_isascii(int a);
 int		ft_isdigit(int a);
 int		ft_isprint(int a);
-
 
 int		ft_toupper(int a);
 void	ft_toupper_string(char *string);
@@ -118,4 +122,10 @@ int		ft_formater(va_list *args, char c);
 int		ft_int_format(va_list *args, char c);
 int		ft_hex_format(va_list *args, char c);
 int		ft_unsigned_format(va_list *args);
+
+//get next line
+char	*get_next_line(int fd);
+char	*ft_read_to_left_str(int fd, char *left_str);
+char	*ft_get_line(char *left_str);
+char	*ft_new_left_str(char *left_str);
 #endif
