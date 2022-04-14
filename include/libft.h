@@ -6,7 +6,7 @@
 /*   By: ardayalman <ardayalman@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 14:05:52 by ayalman           #+#    #+#             */
-/*   Updated: 2022/04/14 14:51:17 by ardayalman       ###   ########.fr       */
+/*   Updated: 2022/04/14 15:04:51 by ardayalman       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ char	*ft_strdup(const char *str);
 char	*ft_strnstr(const char *bigy, const char *mini, size_t n);
 char	*ft_strrchr(const char *s, int c);
 char	*ft_strchr(const char *s, int c);
+
 //2.Part
 void	ft_putchar_fd(char a, int fd);
 void	ft_putendl_fd(char *s, int fd);
@@ -79,6 +80,7 @@ char	**ft_split(char const *s, char c);
 char	*ft_itoa(int n);
 
 void	ft_striteri(char *s, void (*f)(unsigned int, char*));
+
 //3.Bonus
 t_list	*ft_lstnew(void *content);
 void	ft_lstadd_front(t_list **lst, t_list *new);
@@ -89,6 +91,7 @@ void	ft_lstdelone(t_list *lst, void (*del)(void *));
 void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+
 //Math
 void	ft_quick(int *array, int low, int high);
 int		ft_power(int nb, int power);
@@ -96,6 +99,7 @@ bool	ft_isprime(int nb);
 int		ft_fib(int index);
 int		ft_factorial(int nb);
 int		ft_abs(int a);
+
 //printf
 void	ft_dec2hexhigh(long int decimalNumber);
 int		ft_printf(const char *str, ...);
