@@ -6,7 +6,7 @@
 /*   By: ardayalman <ardayalman@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 14:05:52 by ayalman           #+#    #+#             */
-/*   Updated: 2022/04/14 02:39:33 by ardayalman       ###   ########.fr       */
+/*   Updated: 2022/04/14 14:51:17 by ardayalman       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdbool.h>
+# include <stdarg.h>
+# include <limits.h>
 
 # define ANSI_RED		"\x1b[31m"
 # define ANSI_BLUE		"\x1b[34m"
@@ -94,4 +96,22 @@ bool	ft_isprime(int nb);
 int		ft_fib(int index);
 int		ft_factorial(int nb);
 int		ft_abs(int a);
+//printf
+void	ft_dec2hexhigh(long int decimalNumber);
+int		ft_printf(const char *str, ...);
+void	ft_dec2hexlow(long int decimalNumber);
+int		ft_counthex(long int decimalNumber);
+void	ft_putnbr(int nb);
+int		ft_putchar(char c);
+int		ft_countdec(long long p);
+void	ft_putnbrlu(double nb);
+void	ft_putnbru(unsigned int a);
+int		ft_putstr(char *str);
+void	ft_pointhex(long long int decimalNumber);
+int		ft_count_phex(long long int decimalNumber);
+int		ft_string(va_list *args);
+int		ft_formater(va_list *args, char c);
+int		ft_int_format(va_list *args, char c);
+int		ft_hex_format(va_list *args, char c);
+int		ft_unsigned_format(va_list *args);
 #endif
