@@ -40,13 +40,13 @@ _MAIN_		=	ft_isalnum ft_isalpha ft_isascii ft_isdigit ft_isprint \
 				ft_itoa ft_tolower ft_toupper ft_split ft_strchr ft_strdup \
 				ft_striteri ft_strjoin \
 				ft_strlcat ft_strlcpy ft_strlen ft_strmapi ft_strncmp \
-				ft_strnstr ft_strrchr ft_strtrim ft_substr \
+				ft_strnstr ft_strrchr ft_strtrim ft_substr ft_putstr_color_fd\
 
 #EXTRA_DIR	=	extra/ "extra directories"
 #EXTRA		=	"extra functions" you can add as many functions as you need.
 
 MATH_DIR	= 	ft_math/
-_MATH_		= 	ft_factorial ft_fib ft_isprime ft_power ft_quick
+_MATH_		= 	ft_factorial ft_fib ft_isprime ft_power ft_quick ft_abs ft_comdiv
 
 BONUS_DIR	=	bonus/
 _BONUS_		=	ft_lstadd_back ft_lstadd_front ft_lstclear ft_lstdelone \
