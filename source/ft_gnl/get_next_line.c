@@ -3,13 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ardayalman <ardayalman@student.42.fr>      +#+  +:+       +#+        */
+/*   By: ayalman <ayalman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/03 02:04:58 by ardayalman        #+#    #+#             */
-/*   Updated: 2022/04/14 15:12:33 by ardayalman       ###   ########.fr       */
+/*   Updated: 2022/04/19 14:52:53 by ayalman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "libft.h"
 

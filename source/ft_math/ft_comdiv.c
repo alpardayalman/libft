@@ -1,32 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_comdiv.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ayalman <ayalman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/31 14:10:43 by ayalman           #+#    #+#             */
-/*   Updated: 2022/04/19 14:50:57 by ayalman          ###   ########.fr       */
+/*   Created: 2022/04/19 14:53:05 by ayalman           #+#    #+#             */
+/*   Updated: 2022/04/19 14:57:40 by ayalman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isalpha(int a)
+int	ft_comdiv(int a, int b)
 {
-	return ((a >= 'A' && a <= 'Z') || (a >= 'a' && a <= 'z'));
-}
+	int	t;
 
-bool	ft_str_isalpha(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
+	if (a == 0 || b == 0)
+		return (0);
+	while (b != 0)
 	{
-		if (!ft_isalpha(str[i]))
-			return (false);
-		i++;
+		t = a % b;
+		a = b;
+		b = t;
 	}
-	return (true);
+	return (a);
 }
