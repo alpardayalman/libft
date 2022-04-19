@@ -19,6 +19,7 @@
 # include <stdarg.h>
 # include <limits.h>
 # include <fcntl.h>
+# include <signal.h>
 
 # define ANSI_RED		"\x1b[31m"
 # define ANSI_BLUE		"\x1b[34m"
@@ -103,6 +104,7 @@ bool	ft_isprime(int nb);
 int		ft_fib(int index);
 int		ft_factorial(int nb);
 int		ft_abs(int a);
+int		ft_comdiv(int a, int b);
 
 //printf
 void	ft_dec2hexhigh(long int decimalNumber);
