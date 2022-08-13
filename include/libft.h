@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayalman <ayalman@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ardayalman <ardayalman@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 14:05:52 by ayalman           #+#    #+#             */
-/*   Updated: 2022/06/22 16:08:37 by ayalman          ###   ########.fr       */
+/*   Updated: 2022/08/13 22:16:43 by ardayalman       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,11 @@
 # include <limits.h>
 # include <fcntl.h>
 # include <signal.h>
+
+# include "graphft.h"
+# include "queueft.h"
+# include "stackft.h"
+# include "threeft.h"
 
 # define ANSI_RED "\x1b[31m"
 # define ANSI_BLUE "\x1b[34m"
