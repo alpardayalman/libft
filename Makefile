@@ -6,7 +6,7 @@
 #    By: ardayalman <ardayalman@student.42.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/31 22:49:43 by ayalman           #+#    #+#              #
-#    Updated: 2022/04/14 15:24:27 by ardayalman       ###   ########.fr        #
+#    Updated: 2022/08/14 03:17:06 by ardayalman       ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ CC			=	gcc
 CFLAGS		=	-Wall -Werror -Wextra -I
 RM			=	rm -f
 AR			=	ar rcs
-
+SHELL		:= /bin/bash
 #Colors
 
 DEF_COLOR = \033[0;39m
@@ -30,6 +30,8 @@ BLUE = \033[0;94m
 MAGENTA = \033[0;95m
 CYAN = \033[0;96m
 WHITE = \033[0;97m
+RESET = \e[0m
+BOLD = \e[1m
 
 #Sources
 
@@ -59,19 +61,22 @@ _PRINTF_	=	ft_outils ft_printf ft_count ft_printf_hex_high ft_printf_hex_low \
 GNL_DIR		=	ft_gnl/
 _GNL_		=	get_next_line
 
+STACK_DIR	=	ft_stack/
+_STACK_		=	ft_stack_main
+
 SRC_FILES+=$(addprefix $(MAIN_DIR),$(_MAIN_))
 #SRC_FILES+=$(addprefix $(EXTRA_DIR),$(EXTRA))
 SRC_FILES+=$(addprefix $(MATH_DIR),$(_MATH_))
 SRC_FILES+=$(addprefix $(PRINTF_DIR),$(_PRINTF_))
 SRC_FILES+=$(addprefix $(GNL_DIR),$(_GNL_))
+SRC_FILES+=$(addprefix $(STACK_DIR),$(_STACK_))
 BONUS_FILES+=$(addprefix $(BONUS_DIR),$(_BONUS_))
 
 SRC 		= 	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJ 		= 	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
 BONUS_OBJ	= 	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(BONUS_FILES)))
 
-
-###
+C = $(words $N)$(eval N:=x $N)
 
 OBJF		=	.cache_exists
 
@@ -80,16 +85,17 @@ all:		$(NAME)
 $(NAME):	$(OBJ)
 			@$(AR) $(NAME) $(OBJ)
 			@ranlib $(NAME)
-			@echo "$(GREEN)--> Protocol compiled.$(DEF_COLOR)"
+			@printf "\r$(GREEN)$(BOLD)Protocol compiled.$(DEF_COLOR)"
 
 $(OBJ_DIR)%.o : $(SRC_DIR)%.c | $(OBJF)
-			@echo "$(YELLOW)--> Compiling: $< $(DEF_COLOR)"
+			@printf "\r$(GREEN)$(BOLD)[%s] %s$(RESET)" "$C" "$N"
 			@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 $(OBJF):
 			@mkdir -p $(OBJ_DIR)
 			@mkdir -p $(OBJ_DIR)$(MAIN_DIR)
 #			@mkdir -p $(OBJ_DIR)$(EXTRA_DIR)
+			@mkdir -p $(OBJ_DIR)$(STACK_DIR)
 			@mkdir -p $(OBJ_DIR)$(MATH_DIR)
 			@mkdir -p $(OBJ_DIR)$(PRINTF_DIR)
 			@mkdir -p $(OBJ_DIR)$(GNL_DIR)
@@ -97,19 +103,20 @@ $(OBJF):
 
 bonus:		$(BONUS_OBJ)
 			@$(AR) $(NAME) $(BONUS_OBJ)
-			@echo "$(GREEN)--> Bonus Objectives are compiled.$(DEF_COLOR)"
+			@printf "\r$(GREEN)$(BOLD)Bonus Objectives are compiled.$(DEF_COLOR)"
 
 clean:
 			@$(RM) -rf $(OBJ_DIR)
 			@$(RM) -f $(OBJF)
-			@echo "$(RED)--> Files clensed.$(DEF_COLOR)"
+			@printf "\r$(GREEN)$(BOLD)[%s] %s$(RESET)" "$C" "$N"
+			@printf "\r$(RED)$(BOLD)Files clensed.$(DEF_COLOR)"
 
 fclean:		clean
 			@$(RM) -f $(NAME)
-			@echo "$(RED)--> Executable files clensed.$(DEF_COLOR)"
+			@printf "\r$(RED)$(BOLD)Executable files clensed.$(DEF_COLOR)"
 
 re:			fclean all
-			@echo "$(GREEN)--> Protocol rebuilt.$(DEF_COLOR)"
+			@printf "\r$(YELLOW)$(BOLD)Protocol rebuilt.$(DEF_COLOR)"
 
 norm:
 			@norminette $(SRC) $(INCLUDES) | grep -v Norme -B1 || true
