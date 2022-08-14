@@ -6,7 +6,7 @@
 #    By: ardayalman <ardayalman@student.42.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/31 22:49:43 by ayalman           #+#    #+#              #
-#    Updated: 2022/08/14 03:17:06 by ardayalman       ###   ########.fr        #
+#    Updated: 2022/08/15 01:31:11 by ardayalman       ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,6 +61,9 @@ _PRINTF_	=	ft_outils ft_printf ft_count ft_printf_hex_high ft_printf_hex_low \
 GNL_DIR		=	ft_gnl/
 _GNL_		=	get_next_line
 
+GRAPH_DIR	=	ft_graph/
+_GRAPH_		=	ft_graph_main
+
 STACK_DIR	=	ft_stack/
 _STACK_		=	ft_stack_main
 
@@ -70,13 +73,18 @@ SRC_FILES+=$(addprefix $(MATH_DIR),$(_MATH_))
 SRC_FILES+=$(addprefix $(PRINTF_DIR),$(_PRINTF_))
 SRC_FILES+=$(addprefix $(GNL_DIR),$(_GNL_))
 SRC_FILES+=$(addprefix $(STACK_DIR),$(_STACK_))
+SRC_FILES+=$(addprefix $(GRAPH_DIR),$(_GRAPH_))
 BONUS_FILES+=$(addprefix $(BONUS_DIR),$(_BONUS_))
 
 SRC 		= 	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJ 		= 	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
 BONUS_OBJ	= 	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(BONUS_FILES)))
 
+ifndef BUILD
+T := $(shell $(MAKE) -nrRf $(firstword $(MAKEFILE_LIST)) $(MAKECMDGOALS) BUILD="COUNTTHIS" | grep -c "COUNTTHIS")
 C = $(words $N)$(eval N:=x $N)
+BUILD = printf "\r$(GREEN)$(BOLD){%s of %d}$(RESET) $(GREEN)%s$(RESET)" "$C" "$T" "$<"
+endif
 
 OBJF		=	.cache_exists
 
@@ -88,7 +96,7 @@ $(NAME):	$(OBJ)
 			@printf "\r$(GREEN)$(BOLD)Protocol compiled.$(DEF_COLOR)"
 
 $(OBJ_DIR)%.o : $(SRC_DIR)%.c | $(OBJF)
-			@printf "\r$(GREEN)$(BOLD)[%s] %s$(RESET)" "$C" "$N"
+			@$(BUILD)
 			@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 $(OBJF):
@@ -96,6 +104,7 @@ $(OBJF):
 			@mkdir -p $(OBJ_DIR)$(MAIN_DIR)
 #			@mkdir -p $(OBJ_DIR)$(EXTRA_DIR)
 			@mkdir -p $(OBJ_DIR)$(STACK_DIR)
+			@mkdir -p $(OBJ_DIR)$(GRAPH_DIR)
 			@mkdir -p $(OBJ_DIR)$(MATH_DIR)
 			@mkdir -p $(OBJ_DIR)$(PRINTF_DIR)
 			@mkdir -p $(OBJ_DIR)$(GNL_DIR)
@@ -103,13 +112,12 @@ $(OBJF):
 
 bonus:		$(BONUS_OBJ)
 			@$(AR) $(NAME) $(BONUS_OBJ)
-			@printf "\r$(GREEN)$(BOLD)Bonus Objectives are compiled.$(DEF_COLOR)"
+			@printf "\r$(GREEN)$(BOLD)Bonus Protocol compiled.$(DEF_COLOR)"
 
 clean:
 			@$(RM) -rf $(OBJ_DIR)
 			@$(RM) -f $(OBJF)
-			@printf "\r$(GREEN)$(BOLD)[%s] %s$(RESET)" "$C" "$N"
-			@printf "\r$(RED)$(BOLD)Files clensed.$(DEF_COLOR)"
+			@printf "\r$(RED)$(BOLD)Protocol clensed.$(DEF_COLOR)"
 
 fclean:		clean
 			@$(RM) -f $(NAME)

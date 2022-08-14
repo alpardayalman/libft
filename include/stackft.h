@@ -6,7 +6,7 @@
 /*   By: ardayalman <ardayalman@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 22:02:50 by ardayalman        #+#    #+#             */
-/*   Updated: 2022/08/13 22:26:47 by ardayalman       ###   ########.fr       */
+/*   Updated: 2022/08/15 00:33:18 by ardayalman       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 
 typedef struct Stack_s
 {
-	char data;
-	struct Stack_s *next;
+	int				data;
+	struct Stack_s	*next;
 } Stack_t;
 
 void	display(Stack_t *pt);
