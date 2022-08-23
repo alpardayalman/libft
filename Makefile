@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ardayalman <ardayalman@student.42.fr>      +#+  +:+       +#+         #
+#    By: ayalman <ayalman@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/31 22:49:43 by ayalman           #+#    #+#              #
-#    Updated: 2022/08/15 01:31:11 by ardayalman       ###   ########.fr        #
+#    Updated: 2022/08/23 12:13:58 by ayalman          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,8 +55,7 @@ _BONUS_		=	ft_lstadd_back ft_lstadd_front ft_lstclear ft_lstdelone \
 				ft_lstiter ft_lstlast ft_lstmap ft_lstnew ft_lstsize
 
 PRINTF_DIR	=	ft_printf/
-_PRINTF_	=	ft_outils ft_printf ft_count ft_printf_hex_high ft_printf_hex_low \
-				ft_printf_pointer ft_printf_string ft_putnbr
+_PRINTF_	=	ft_printf_outils ft_printf
 
 GNL_DIR		=	ft_gnl/
 _GNL_		=	get_next_line
