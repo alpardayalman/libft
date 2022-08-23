@@ -3,64 +3,63 @@
 /*                                                        :::      ::::::::   */
 /*   ft_graph_main.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ardayalman <ardayalman@student.42.fr>      +#+  +:+       +#+        */
+/*   By: ayalman <ayalman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 01:17:39 by ardayalman        #+#    #+#             */
-/*   Updated: 2022/08/15 01:33:16 by ardayalman       ###   ########.fr       */
+/*   Updated: 2022/08/23 12:25:31 by ayalman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-Graph_t	*graph_node_init(int vertex)
+t_Graph	*graph_node_init(int vertex)
 {
-	Graph_t	*graph;
+	t_Graph	*graph;
 	int		i;
 
-	graph = malloc(sizeof(Graph_t));
+	graph = malloc(sizeof(t_Graph));
 	i = 0;
-	graph->numVertices = vertex;
-	graph->adjList = (Graph_Node_t **)malloc(sizeof(Graph_Node_t *) * vertex);
+	graph->numvertices = vertex;
+	graph->adjlist = (t_Graph_Node **)malloc(sizeof(t_Graph_Node *) * vertex);
 	while (i < vertex)
 	{
-		graph->adjList[i] = NULL;
+		graph->adjlist[i] = NULL;
 		i++;
 	}
 	return (graph);
 }
 
-Graph_Node_t	*create_graph_node(int vertex)
+t_Graph_Node	*create_graph_node(int vertex)
 {
-	Graph_Node_t	*ret;
+	t_Graph_Node	*ret;
 
-	ret = malloc(sizeof(Graph_Node_t));
+	ret = malloc(sizeof(t_Graph_Node));
 	ret->a = vertex;
 	ret->next = NULL;
 	return (ret);
 }
 
-void	graph_add(Graph_t *graph, int src, int dest)
+void	graph_add(t_Graph *graph, int src, int dest)
 {
-	Graph_Node_t	*a;
+	t_Graph_Node	*a;
 
 	a = create_graph_node(src);
-	a->next = graph->adjList[dest];
-	graph->adjList[dest] = a;
-
+	a->next = graph->adjlist[dest];
+	graph->adjlist[dest] = a;
 	a = create_graph_node(dest);
-	a->next = graph->adjList[src];
-	graph->adjList[src] = a;
+	a->next = graph->adjlist[src];
+	graph->adjlist[src] = a;
 }
 
-void	print_graph(Graph_t *graph)
+void	print_graph(t_Graph *graph)
 {
 	int				v;
-	Graph_Node_t	*temp;
+	t_Graph_Node	*temp;
 
 	v = 0;
-	while (v < graph->numVertices)
+	while (v < graph->numvertices)
 	{
-		temp = graph->adjList[v];
+		temp = graph->adjlist[v];
 		ft_printf("\n Vertex %d: ", v);
 		while (temp)
 		{

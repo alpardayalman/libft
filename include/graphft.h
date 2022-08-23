@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   graphft.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ardayalman <ardayalman@student.42.fr>      +#+  +:+       +#+        */
+/*   By: ayalman <ayalman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 22:04:44 by ardayalman        #+#    #+#             */
-/*   Updated: 2022/08/15 01:32:57 by ardayalman       ###   ########.fr       */
+/*   Updated: 2022/08/23 12:26:00 by ayalman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,20 @@
 # define GRAPHFT_H
 # include "libft.h"
 
-typedef struct Graph_Node_s
+typedef struct s_Graph_Node
 {
 	int					a;
-	struct Graph_Node_s	*next;
-} Graph_Node_t;
+	struct s_Graph_Node	*next;
+}	t_Graph_Node;
 
-typedef struct Graph_s
+typedef struct s_Graph
 {
-	int					numVertices;
-	struct Graph_Node_s	**adjList;
-} Graph_t;
+	int					numvertices;
+	struct s_Graph_Node	**adjlist;
+}	t_Graph;
 
-Graph_t			*graph_node_init(int vertex);
-Graph_Node_t	*create_graph_node(int vertex);
-void			graph_add(Graph_t *graph, int src, int dest);
-void			print_graph(Graph_t *graph);
+t_Graph			*graph_node_init(int vertex);
+t_Graph_Node	*create_graph_node(int vertex);
+void			graph_add(t_Graph *graph, int src, int dest);
+void			print_graph(t_Graph *graph);
 #endif

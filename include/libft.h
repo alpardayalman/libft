@@ -6,7 +6,7 @@
 /*   By: ayalman <ayalman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 14:05:52 by ayalman           #+#    #+#             */
-/*   Updated: 2022/08/23 12:13:08 by ayalman          ###   ########.fr       */
+/*   Updated: 2022/08/23 12:23:26 by ayalman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,13 +109,13 @@ int			ft_factorial(int nb);
 int			ft_abs(int a);
 int			ft_comdiv(int a, int b);
 
-int	ft_printf(const char *str, ...);
-int	ft_format(va_list *args, char c);
-int	ft_int(int a);
-int	ft_hex(unsigned int a, char c);
-int	ft_point(unsigned long a, int sign);
-int	ft_string(char *str);
-int	ft_unsigned(unsigned int a);
+int			ft_printf(const char *str, ...);
+int			ft_format(va_list *args, char c);
+int			ft_int(int a);
+int			ft_hex(unsigned int a, char c);
+int			ft_point(unsigned long a, int sign);
+int			ft_string(char *str);
+int			ft_unsigned(unsigned int a);
 
 char		*get_next_line(int fd);
 char		*ft_read_to_left_str(int fd, char *left_str);
