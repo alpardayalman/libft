@@ -12,63 +12,57 @@
 
 #include "libft.h"
 
-static int	ft_pic(long n)
+static int	ft_get_size(int n)
 {
-	size_t	estim;
+	int	size;
 
-	estim = 0;
-	if (n < 0)
+	size = 0;
+	if (n <= 0)
+		size++;
+	while (n != 0)
 	{
-		estim++;
-		n = -n;
+		n = n / 10;
+		size++;
 	}
-	while (n >= 1)
-	{
-		estim++;
-		n /= 10;
-	}
-	return (estim);
+	return (size);
 }
 
-static char	*ft_oc(char *rtn, long nbr, int len, int neg)
+static void	ft_fill_res(int size, int offset, int n, char *res)
 {
-	if (nbr != 0)
-		rtn = malloc(sizeof(char) * (len + 1));
-	else
-		return (rtn = ft_strdup("0"));
-	if (!rtn)
-		return (0);
-	if (nbr < 0)
+	while (size > offset)
 	{
-		neg++;
-		nbr = -nbr;
+		res[size - 1] = n % 10 + '0';
+		n = n / 10;
+		size--;
 	}
-	rtn[len] = '\0';
-	while (--len)
-	{
-		rtn[len] = (nbr % 10) + '0';
-		nbr /= 10;
-	}
-	if (neg == 1)
-		rtn[0] = '-';
-	else
-		rtn[0] = (nbr % 10) + '0';
-	return (rtn);
 }
 
 char	*ft_itoa(int n)
 {
-	int		len;
-	char	*rtn;
-	long	nbr;
-	int		neg;
+	int		offset;
+	int		size;
+	char	*res;
 
-	nbr = n;
-	len = ft_pic(nbr);
-	rtn = 0;
-	neg = 0;
-	rtn = ft_oc(rtn, nbr, len, neg);
-	if (!rtn)
-		return (0);
-	return (rtn);
+	offset = 0;
+	size = ft_get_size(n);
+	res = ((char *)malloc(sizeof(char) * size + 1));
+	if (res == NULL)
+		return (NULL);
+	if (n == -2147483648)
+	{
+		res[0] = '-';
+		res[1] = '2';
+		n = 147483648;
+		offset = 2;
+	}
+	else if (n < 0)
+	{
+		res[0] = '-';
+		offset = 1;
+		n = -n;
+	}
+	ft_fill_res(size, offset, n, res);
+	res[size] = '\0';
+	return (res);
 }
+
